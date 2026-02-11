@@ -1,0 +1,36 @@
+<section id="hero" class="hero" appReveal>
+  <div class="hero__container">
+    <div class="hero__content">
+      <h1 class="hero__headline">{{ content.headline }}</h1>
+      <p class="hero__sub">{{ content.subheadline }}</p>
+
+      <div class="hero__actions">
+        <a
+          mat-flat-button
+          class="hero__cta-primary"
+          [href]="content.resumeUrl"
+          target="_blank"
+          rel="noopener"
+        >
+          <mat-icon>description</mat-icon>
+          {{ content.ctaPrimary }}
+        </a>
+        <a
+          mat-stroked-button
+          class="hero__cta-secondary"
+          href="#contact"
+          (click)="$event.preventDefault()"
+          onclick="document.getElementById('contact')?.scrollIntoView({behavior:'smooth'})"
+        >
+          {{ content.ctaSecondary }}
+        </a>
+      </div>
+
+      <div class="hero__credibility">
+        @for (item of content.credibility; track item) {
+          <span class="hero__chip">{{ item }}</span>
+        }
+      </div>
+    </div>
+  </div>
+</section>

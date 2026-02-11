@@ -1,0 +1,170 @@
+.resume {
+  &__timeline {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 3rem;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0.5rem;
+      top: 0.5rem;
+      bottom: 0;
+      width: 2px;
+      background: var(--border-color);
+    }
+  }
+
+  &__item {
+    position: relative;
+    margin-bottom: 2rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__dot {
+    position: absolute;
+    left: -1.65rem;
+    top: 0.75rem;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--surface-bg);
+    z-index: 1;
+  }
+
+  &__card {
+    background: var(--surface-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: border-color 0.2s ease;
+
+    &:hover {
+      border-color: var(--accent);
+    }
+  }
+
+  &__card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  &__role {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+  }
+
+  &__company {
+    font-size: 0.9rem;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  &__period {
+    font-size: 0.825rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  &__desc {
+    margin: 0;
+    padding-left: 1.25rem;
+
+    li {
+      font-size: 0.925rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 0.35rem;
+    }
+  }
+
+  &__section {
+    margin-bottom: 2.5rem;
+  }
+
+  &__section-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    mat-icon {
+      color: var(--accent);
+      font-size: 1.25rem;
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+  }
+
+  &__edu-item {
+    margin-bottom: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  &__edu-degree {
+    font-weight: 500;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+  }
+
+  &__edu-meta {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  &__certs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  &__cert-chip {
+    font-size: 0.825rem;
+    font-weight: 500;
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    background: var(--chip-bg);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+  }
+
+  &__download {
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  &__download-btn {
+    background-color: var(--accent) !important;
+    color: #fff !important;
+    font-weight: 600;
+    border-radius: 8px !important;
+    padding: 0 2rem !important;
+    height: 48px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px var(--accent-shadow);
+    }
+  }
+}

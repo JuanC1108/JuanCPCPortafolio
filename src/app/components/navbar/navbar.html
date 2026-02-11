@@ -1,0 +1,43 @@
+<nav
+  class="navbar"
+  [class.navbar--scrolled]="scrolled()"
+  role="navigation"
+  aria-label="Main navigation"
+>
+  <div class="navbar__inner">
+    <a class="navbar__logo" (click)="navigateTo('hero')" tabindex="0">
+      {{ content.name }}
+    </a>
+
+    <div class="navbar__links" [class.navbar__links--open]="mobileMenuOpen()">
+      @for (link of content.links; track link.fragment) {
+        <button
+          mat-button
+          class="navbar__link"
+          (click)="navigateTo(link.fragment)"
+        >
+          {{ link.label }}
+        </button>
+      }
+    </div>
+
+    <div class="navbar__actions">
+      <button
+        mat-icon-button
+        (click)="themeService.toggle()"
+        [attr.aria-label]="'Switch to ' + (themeService.theme() === 'light' ? 'dark' : 'light') + ' mode'"
+      >
+        <mat-icon>{{ themeService.theme() === 'light' ? 'dark_mode' : 'light_mode' }}</mat-icon>
+      </button>
+
+      <button
+        mat-icon-button
+        class="navbar__hamburger"
+        (click)="toggleMobileMenu()"
+        aria-label="Toggle navigation menu"
+      >
+        <mat-icon>{{ mobileMenuOpen() ? 'close' : 'menu' }}</mat-icon>
+      </button>
+    </div>
+  </div>
+</nav>

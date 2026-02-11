@@ -1,0 +1,32 @@
+<section id="contact" class="contact section">
+  <div class="section__container contact__container" appReveal>
+    <h2 class="section__title">{{ content.title }}</h2>
+    <p class="contact__subtitle">{{ content.subtitle }}</p>
+
+    <a
+      mat-flat-button
+      class="contact__email-btn"
+      [href]="'mailto:' + content.email"
+    >
+      <mat-icon>email</mat-icon>
+      {{ content.email }}
+    </a>
+
+    <div class="contact__socials">
+      @for (social of content.socials; track social.label) {
+        <a
+          mat-stroked-button
+          class="contact__social-btn"
+          [href]="social.url"
+          target="_blank"
+          rel="noopener"
+        >
+          <mat-icon>{{ social.icon }}</mat-icon>
+          {{ social.label }}
+        </a>
+      }
+    </div>
+
+    <p class="contact__availability">{{ content.availability }}</p>
+  </div>
+</section>

@@ -1,0 +1,68 @@
+<section id="resume" class="resume section">
+  <div class="section__container" appReveal>
+    <h2 class="section__title">Resume</h2>
+    <p class="section__subtitle">My professional journey and qualifications.</p>
+
+    <!-- Experience Timeline -->
+    <div class="resume__timeline">
+      @for (job of content.jobs; track job.company + job.period) {
+        <div class="resume__item" appReveal>
+          <div class="resume__dot"></div>
+          <div class="resume__card">
+            <div class="resume__card-header">
+              <div>
+                <h3 class="resume__role">{{ job.role }}</h3>
+                <span class="resume__company">{{ job.company }}</span>
+              </div>
+              <span class="resume__period">{{ job.period }}</span>
+            </div>
+            <ul class="resume__desc">
+              @for (item of job.description; track item) {
+                <li>{{ item }}</li>
+              }
+            </ul>
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- Education -->
+    <div class="resume__section" appReveal>
+      <h3 class="resume__section-title">
+        <mat-icon>school</mat-icon> Education
+      </h3>
+      @for (edu of content.education; track edu.school) {
+        <div class="resume__edu-item">
+          <span class="resume__edu-degree">{{ edu.degree }}</span>
+          <span class="resume__edu-meta">{{ edu.school }} · {{ edu.year }}</span>
+        </div>
+      }
+    </div>
+
+    <!-- Certifications -->
+    <div class="resume__section" appReveal>
+      <h3 class="resume__section-title">
+        <mat-icon>verified</mat-icon> Certifications
+      </h3>
+      <div class="resume__certs">
+        @for (cert of content.certifications; track cert) {
+          <span class="resume__cert-chip">{{ cert }}</span>
+        }
+      </div>
+    </div>
+
+    <!-- Download CTA -->
+    <div class="resume__download" appReveal>
+      <a
+        mat-flat-button
+        class="resume__download-btn"
+        [href]="resumeUrl"
+        target="_blank"
+        rel="noopener"
+      >
+        <mat-icon>download</mat-icon>
+        Download Full Resume (PDF)
+      </a>
+    </div>
+  </div>
+</section>

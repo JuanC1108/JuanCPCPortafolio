@@ -1,0 +1,97 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8rem 1.5rem 4rem;
+
+  &__container {
+    max-width: 800px;
+    width: 100%;
+  }
+
+  &__content {
+    text-align: center;
+  }
+
+  &__headline {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--text-primary);
+    margin: 0 0 1.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  &__sub {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin: 0 0 2.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+  }
+
+  &__cta-primary {
+    background-color: var(--accent) !important;
+    color: #fff !important;
+    font-weight: 600;
+    padding: 0 2rem !important;
+    height: 48px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 8px !important;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px var(--accent-shadow);
+    }
+  }
+
+  &__cta-secondary {
+    border-color: var(--border-color) !important;
+    color: var(--text-primary) !important;
+    font-weight: 600;
+    padding: 0 2rem !important;
+    height: 48px;
+    display: inline-flex;
+    align-items: center;
+    border-radius: 8px !important;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: translateY(-1px);
+    }
+  }
+
+  &__credibility {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+
+  &__chip {
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0.35rem 0.85rem;
+    border-radius: 100px;
+    background: var(--chip-bg);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+    letter-spacing: 0.01em;
+  }
+}
