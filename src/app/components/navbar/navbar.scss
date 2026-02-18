@@ -10,13 +10,14 @@
 .navbar {
   background: transparent;
   backdrop-filter: blur(0px);
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   border-bottom: 1px solid transparent;
 
   &--scrolled {
     background: var(--surface-elevated);
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(16px) saturate(180%);
     border-bottom-color: var(--border-color);
+    box-shadow: 0 1px 12px var(--shadow-color);
   }
 
   &__inner {
@@ -36,6 +37,12 @@
     color: var(--text-primary);
     text-decoration: none;
     user-select: none;
+    transition: color 0.2s ease, transform 0.2s ease;
+
+    &:hover {
+      color: var(--accent);
+      transform: scale(1.05);
+    }
   }
 
   &__links {
@@ -51,9 +58,10 @@
       left: 0;
       right: 0;
       background: var(--surface-elevated);
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(16px) saturate(180%);
       padding: 1rem;
       border-bottom: 1px solid var(--border-color);
+      animation: fade-slide-down 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 
       &--open {
         display: flex;
@@ -66,10 +74,28 @@
     font-weight: 500;
     letter-spacing: 0.02em;
     color: var(--text-secondary) !important;
-    transition: color 0.2s ease;
+    transition: color 0.2s ease, transform 0.2s ease;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 4px;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 1px;
+      transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1), left 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    }
 
     &:hover {
       color: var(--text-primary) !important;
+
+      &::after {
+        width: 60%;
+        left: 20%;
+      }
     }
   }
 
@@ -85,5 +111,16 @@
     @media (max-width: 768px) {
       display: inline-flex !important;
     }
+  }
+}
+
+@keyframes fade-slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

@@ -1,28 +1,28 @@
 <section id="about" class="about section">
-  <div class="section__container" appReveal>
-    <h2 class="section__title">{{ content.title }}</h2>
+  <div class="section__container">
+    <h2 class="section__title" appReveal="fade-left">{{ content.title }}</h2>
 
     <div class="about__content">
       <div class="about__story">
         @for (paragraph of content.paragraphs; track $index) {
-          <p class="about__paragraph">{{ paragraph }}</p>
+          <p class="about__paragraph" appReveal="blur-in" [revealDelay]="$index * 150">{{ paragraph }}</p>
         }
       </div>
 
-      <div class="about__values">
+      <div class="about__values" appReveal="fade-up" [revealDelay]="200">
         <h3 class="about__values-title">How I Work</h3>
-        @for (value of content.values; track value.label) {
-          <div class="about__value" appReveal>
+        @for (value of content.values; track value.label; let i = $index) {
+          <div class="about__value" appReveal="fade-right" [revealDelay]="300 + i * 120">
             <mat-icon class="about__value-icon">check_circle</mat-icon>
             <div>
               <span class="about__value-label">{{ value.label }}</span>
-              <span class="about__value-desc"> — {{ value.description }}</span>
+              <span class="about__value-desc"> &mdash; {{ value.description }}</span>
             </div>
           </div>
         }
       </div>
 
-      <div class="about__looking" appReveal>
+      <div class="about__looking" appReveal="scale-up" [revealDelay]="500">
         <mat-icon class="about__looking-icon">location_searching</mat-icon>
         <p class="about__looking-text">{{ content.looking }}</p>
       </div>

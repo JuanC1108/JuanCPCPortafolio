@@ -11,7 +11,8 @@
       top: 0.5rem;
       bottom: 0;
       width: 2px;
-      background: var(--border-color);
+      background: linear-gradient(to bottom, var(--accent), var(--border-color));
+      animation: line-grow 1.5s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
   }
 
@@ -34,6 +35,11 @@
     background: var(--accent);
     border: 2px solid var(--surface-bg);
     z-index: 1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    .resume__item:hover & {
+      animation: dot-pulse 1.5s ease-in-out infinite;
+    }
   }
 
   &__card {
@@ -41,10 +47,12 @@
     border: 1px solid var(--border-color);
     border-radius: 12px;
     padding: 1.5rem;
-    transition: border-color 0.2s ease;
+    transition: border-color 0.3s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
 
     &:hover {
       border-color: var(--accent);
+      transform: translateX(4px);
+      box-shadow: 0 8px 24px var(--shadow-color);
     }
   }
 
@@ -75,6 +83,10 @@
     color: var(--text-muted);
     font-weight: 500;
     white-space: nowrap;
+    padding: 0.2rem 0.6rem;
+    border-radius: 100px;
+    background: var(--chip-bg);
+    border: 1px solid var(--border-color);
   }
 
   &__desc {
@@ -142,6 +154,12 @@
     background: var(--chip-bg);
     color: var(--text-secondary);
     border: 1px solid var(--border-color);
+    transition: all 0.25s ease;
+
+    &:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
   }
 
   &__download {
@@ -153,18 +171,29 @@
     background-color: var(--accent) !important;
     color: #fff !important;
     font-weight: 600;
-    border-radius: 8px !important;
+    border-radius: 10px !important;
     padding: 0 2rem !important;
     height: 48px;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     text-decoration: none;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.15) 50%, transparent 60%);
+      background-size: 250% 100%;
+      animation: shimmer 3s ease-in-out infinite;
+    }
 
     &:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 4px 12px var(--accent-shadow);
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 8px 24px var(--accent-shadow);
     }
   }
 }

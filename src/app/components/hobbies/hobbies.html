@@ -1,12 +1,14 @@
 <section id="hobbies" class="hobbies section">
-  <div class="section__container" appReveal>
-    <h2 class="section__title">{{ content.title }}</h2>
-    <p class="section__subtitle">What drives me outside of work.</p>
+  <div class="section__container">
+    <h2 class="section__title" appReveal="fade-left">{{ content.title }}</h2>
+    <p class="section__subtitle" appReveal="fade-left" [revealDelay]="100">What drives me outside of work.</p>
 
     <div class="hobbies__grid">
-      @for (hobby of content.items; track hobby.name) {
-        <div class="hobbies__card" appReveal>
-          <mat-icon class="hobbies__icon">{{ hobby.icon }}</mat-icon>
+      @for (hobby of content.items; track hobby.name; let i = $index) {
+        <div class="hobbies__card" appReveal="scale-up" [revealDelay]="i * 150">
+          <div class="hobbies__icon-ring">
+            <mat-icon class="hobbies__icon">{{ hobby.icon }}</mat-icon>
+          </div>
           <h3 class="hobbies__name">{{ hobby.name }}</h3>
           <p class="hobbies__desc">{{ hobby.description }}</p>
         </div>

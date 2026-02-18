@@ -1,18 +1,19 @@
 <section id="contact" class="contact section">
-  <div class="section__container contact__container" appReveal>
-    <h2 class="section__title">{{ content.title }}</h2>
-    <p class="contact__subtitle">{{ content.subtitle }}</p>
+  <div class="section__container contact__container">
+    <h2 class="section__title" appReveal="blur-in">{{ content.title }}</h2>
+    <p class="contact__subtitle" appReveal="blur-in" [revealDelay]="100">{{ content.subtitle }}</p>
 
     <a
       mat-flat-button
       class="contact__email-btn"
       [href]="'mailto:' + content.email"
+      appReveal="scale-up" [revealDelay]="200"
     >
       <mat-icon>email</mat-icon>
       {{ content.email }}
     </a>
 
-    <div class="contact__socials">
+    <div class="contact__socials" appReveal="fade-up" [revealDelay]="350">
       @for (social of content.socials; track social.label) {
         <a
           mat-stroked-button
@@ -27,6 +28,6 @@
       }
     </div>
 
-    <p class="contact__availability">{{ content.availability }}</p>
+    <p class="contact__availability" appReveal="fade-up" [revealDelay]="450">{{ content.availability }}</p>
   </div>
 </section>

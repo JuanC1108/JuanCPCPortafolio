@@ -1,12 +1,12 @@
 <section id="resume" class="resume section">
-  <div class="section__container" appReveal>
-    <h2 class="section__title">Resume</h2>
-    <p class="section__subtitle">My professional journey and qualifications.</p>
+  <div class="section__container">
+    <h2 class="section__title" appReveal="fade-right">Resume</h2>
+    <p class="section__subtitle" appReveal="fade-right" [revealDelay]="100">My professional journey and qualifications.</p>
 
     <!-- Experience Timeline -->
     <div class="resume__timeline">
-      @for (job of content.jobs; track job.company + job.period) {
-        <div class="resume__item" appReveal>
+      @for (job of content.jobs; track job.company + job.period; let i = $index) {
+        <div class="resume__item" appReveal="fade-left" [revealDelay]="i * 200">
           <div class="resume__dot"></div>
           <div class="resume__card">
             <div class="resume__card-header">
@@ -27,20 +27,20 @@
     </div>
 
     <!-- Education -->
-    <div class="resume__section" appReveal>
+    <div class="resume__section" appReveal="fade-up" [revealDelay]="100">
       <h3 class="resume__section-title">
         <mat-icon>school</mat-icon> Education
       </h3>
       @for (edu of content.education; track edu.school) {
         <div class="resume__edu-item">
           <span class="resume__edu-degree">{{ edu.degree }}</span>
-          <span class="resume__edu-meta">{{ edu.school }} · {{ edu.year }}</span>
+          <span class="resume__edu-meta">{{ edu.school }} &middot; {{ edu.year }}</span>
         </div>
       }
     </div>
 
     <!-- Certifications -->
-    <div class="resume__section" appReveal>
+    <div class="resume__section" appReveal="fade-up" [revealDelay]="200">
       <h3 class="resume__section-title">
         <mat-icon>verified</mat-icon> Certifications
       </h3>
@@ -52,7 +52,7 @@
     </div>
 
     <!-- Download CTA -->
-    <div class="resume__download" appReveal>
+    <div class="resume__download" appReveal="scale-up" [revealDelay]="300">
       <a
         mat-flat-button
         class="resume__download-btn"

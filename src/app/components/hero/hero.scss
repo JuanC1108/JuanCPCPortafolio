@@ -4,14 +4,88 @@
   align-items: center;
   justify-content: center;
   padding: 8rem 1.5rem 4rem;
+  position: relative;
+  overflow: hidden;
+
+  // Animated background orbs
+  &__bg-orbs {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  &__orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+
+    &--1 {
+      width: 400px;
+      height: 400px;
+      background: var(--accent);
+      top: -10%;
+      right: -5%;
+      animation: float 8s ease-in-out infinite;
+      opacity: 0.08;
+    }
+
+    &--2 {
+      width: 300px;
+      height: 300px;
+      background: #7c3aed;
+      bottom: 10%;
+      left: -5%;
+      animation: float 10s ease-in-out infinite 2s;
+      opacity: 0.06;
+    }
+
+    &--3 {
+      width: 200px;
+      height: 200px;
+      background: #06b6d4;
+      top: 40%;
+      right: 20%;
+      animation: float 12s ease-in-out infinite 4s;
+      opacity: 0.05;
+    }
+  }
 
   &__container {
     max-width: 800px;
     width: 100%;
+    position: relative;
+    z-index: 1;
   }
 
   &__content {
     text-align: center;
+  }
+
+  // Availability badge
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    background: var(--accent-subtle);
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    margin-bottom: 2rem;
+  }
+
+  &__badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #22c55e;
+    animation: pulse-glow 2s ease-in-out infinite;
+    box-shadow: 0 0 6px #22c55e;
   }
 
   &__headline {
@@ -20,15 +94,15 @@
     line-height: 1.15;
     color: var(--text-primary);
     margin: 0 0 1.5rem;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
   }
 
   &__sub {
-    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
     line-height: 1.7;
     color: var(--text-secondary);
     margin: 0 0 2.5rem;
-    max-width: 600px;
+    max-width: 580px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -50,13 +124,28 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    border-radius: 8px !important;
+    border-radius: 10px !important;
     text-decoration: none;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.15) 50%, transparent 60%);
+      background-size: 250% 100%;
+      animation: shimmer 3s ease-in-out infinite;
+    }
 
     &:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 4px 12px var(--accent-shadow);
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 8px 24px var(--accent-shadow);
+    }
+
+    &:active {
+      transform: translateY(0) scale(0.98);
     }
   }
 
@@ -68,12 +157,25 @@
     height: 48px;
     display: inline-flex;
     align-items: center;
-    border-radius: 8px !important;
+    gap: 0.35rem;
+    border-radius: 10px !important;
     text-decoration: none;
-    transition: transform 0.2s ease;
+    transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.2s ease;
+
+    mat-icon {
+      font-size: 18px;
+      width: 18px;
+      height: 18px;
+      transition: transform 0.25s ease;
+    }
 
     &:hover {
-      transform: translateY(-1px);
+      transform: translateY(-2px);
+      border-color: var(--accent) !important;
+
+      mat-icon {
+        transform: translateX(3px);
+      }
     }
   }
 
@@ -93,5 +195,30 @@
     color: var(--text-secondary);
     border: 1px solid var(--border-color);
     letter-spacing: 0.01em;
+    animation: chip-pop 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+  }
+
+  // Scroll indicator
+  &__scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+    animation: float 2s ease-in-out infinite;
   }
 }

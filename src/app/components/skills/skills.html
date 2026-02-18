@@ -1,18 +1,20 @@
 <section id="skills" class="skills section">
-  <div class="section__container" appReveal>
-    <h2 class="section__title">Skills & Technologies</h2>
-    <p class="section__subtitle">The tools I use to build reliable software.</p>
+  <div class="section__container">
+    <h2 class="section__title" appReveal="fade-right">Skills & Technologies</h2>
+    <p class="section__subtitle" appReveal="fade-right" [revealDelay]="100">The tools I use to build reliable software.</p>
 
     <div class="skills__grid">
-      @for (category of categories; track category.name) {
-        <div class="skills__category" appReveal>
+      @for (category of categories; track category.name; let i = $index) {
+        <div class="skills__category" appReveal="scale-up" [revealDelay]="i * 100">
           <div class="skills__category-header">
-            <mat-icon class="skills__category-icon">{{ category.icon }}</mat-icon>
+            <div class="skills__icon-wrapper">
+              <mat-icon class="skills__category-icon">{{ category.icon }}</mat-icon>
+            </div>
             <h3 class="skills__category-name">{{ category.name }}</h3>
           </div>
           <div class="skills__chips">
-            @for (skill of category.skills; track skill) {
-              <span class="skills__chip">{{ skill }}</span>
+            @for (skill of category.skills; track skill; let j = $index) {
+              <span class="skills__chip" [style.animation-delay]="(i * 100 + j * 50) + 'ms'">{{ skill }}</span>
             }
           </div>
         </div>
